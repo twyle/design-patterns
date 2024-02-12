@@ -212,3 +212,41 @@ Run this workflow:
 ```sh
 python -m state
 ```
+
+Here is the output:
+```sh
+2024-02-12 21:35:37,311 - root - INFO - Transitioning to state: Locked
+2024-02-12 21:35:37,311 - root - INFO - Transitioning to state: Ready
+2024-02-12 21:35:37,312 - root - INFO - Starting the player.
+2024-02-12 21:35:37,312 - root - INFO - The current song is: first
+2024-02-12 21:35:37,312 - root - INFO - The volume is: 0.20
+2024-02-12 21:35:37,312 - root - INFO - Transitioning to state: Playing
+2024-02-12 21:35:37,312 - root - INFO - Increasing the volume.
+2024-02-12 21:35:37,312 - root - INFO - The initial volume is: 0.20
+2024-02-12 21:35:37,312 - root - INFO - The final volume is: 0.30
+2024-02-12 21:35:37,312 - root - INFO - Increasing the volume.
+2024-02-12 21:35:37,312 - root - INFO - The initial volume is: 0.30
+2024-02-12 21:35:37,312 - root - INFO - The final volume is: 0.40
+2024-02-12 21:35:37,312 - root - INFO - Setting the next song: second
+2024-02-12 21:35:37,312 - root - INFO - Increasing the volume.
+2024-02-12 21:35:37,312 - root - INFO - The initial volume is: 0.40
+2024-02-12 21:35:37,312 - root - INFO - The final volume is: 0.50
+2024-02-12 21:35:37,312 - root - INFO - Increasing the volume.
+2024-02-12 21:35:37,312 - root - INFO - The initial volume is: 0.50
+2024-02-12 21:35:37,312 - root - INFO - The final volume is: 0.60
+2024-02-12 21:35:37,313 - root - INFO - Setting the next song: third
+2024-02-12 21:35:37,313 - root - INFO - Setting the previous song: second
+2024-02-12 21:35:37,313 - root - INFO - Stopping the player.
+2024-02-12 21:35:37,313 - root - INFO - The current song is: second
+2024-02-12 21:35:37,313 - root - INFO - The volume is: 0.60
+2024-02-12 21:35:37,313 - root - INFO - Transitioning to state: Ready
+2024-02-12 21:35:37,313 - root - INFO - Transitioning to state: Locked
+2024-02-12 21:35:37,313 - root - INFO - The player is locked, so we cannot clieck the play button. Click the "lock" button to unlock the player.
+2024-02-12 21:35:37,313 - root - INFO - Transitioning to state: Ready
+2024-02-12 21:35:37,313 - root - INFO - Starting the player.
+2024-02-12 21:35:37,313 - root - INFO - The current song is: second
+2024-02-12 21:35:37,313 - root - INFO - The volume is: 0.60
+2024-02-12 21:35:37,313 - root - INFO - Transitioning to state: Playing
+2024-02-12 21:35:37,314 - root - INFO - Transitioning to state: Locked
+2024-02-12 21:35:37,314 - root - INFO - Transitioning to state: Playing
+```

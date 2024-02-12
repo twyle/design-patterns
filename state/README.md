@@ -1,16 +1,21 @@
 # State Design Pattern in Python
 This is a pattern that enables an object to behave differently depending on its internal state. Think of an ``Audio Player``. It has three definate states:
-- Locked; in this state, the user cannot access the player UI. Same as when you lock your phone by clicking the lock button
-- Ready; when you clieck on the lock button, when your phone was locked. This unlocks it and gives you access to the phones user interface.
-- Playing; this is when the player is actually playing some music.
+- ```Locked```: in this state, the user cannot access the player UI. Same as when you lock your phone by clicking the lock button
+- ```Ready```: when you click on the lock button, when your phone was locked. This unlocks it and gives you access to the phones user interface.
+- ```Playing```: this is when the player is actually playing some music.
 
-Depending on the particular state, the player may behave differently. For example, when locked, clicking the lock button unlocks the phone. However clicking the next button or previous button does nothing(in this case we cannot even access them). However when the player is in a playing state, clicking on the next button plays the next song.
+As a simple example consider this workflow. Assume that the only application that your phone has is the music player:
+1. Your phone is initially locked. At this point, you cannot use any functionality except click on the lock button or the volume buttons. This is the initial ```State```, that we refer to as the ```Locked State```.
+2. So you click on the ```lock button```. This unlocks your phone and now you can interact with the phone via the User Interface - buttons. This is the ```Ready state```. At this point, you can once again lock the phone, adjust the volume, scroll through the playlist or even start playing music.
+3. To start playing music, you click on the ```play button```. This takes the ```Player``` to the ```Playing State```. In this state, you can also adjust the volume, scroll through the playlist or even decide to lock the phone.
+
+Depending on the particular state, the player may behave differently. For example, when ```locked```, clicking the ```lock button``` unlocks the phone. However clicking the ```next button``` or ```previous button``` does nothing(in this case we cannot even access them). However when the player is in a ```playing state```, clicking on the ```next button``` plays the next song.
 
 This pattern has two major components:
 - ``Context`` which is the object whose behavior changes based on its internal state.
 - ``State`` which describes the various states that the ``Context`` can assume.
 
-The ``Context`` receives various requests. In this example, these colud include:
+The ``Context`` receives various requests. In this example, these could include:
 - Lock or unlock
 - Set the previous or next song
 - Play or pause current song
@@ -47,6 +52,23 @@ class State(ABC):
 ```
 
 Each concrete state will have to implement those four abstract methods. In addition, each receives a refrence to the ``Context`` that can be used to change the ``Context's`` state.
+
+Here is the ```Playing State```:
+```py
+class Playing(State):
+    def click_lock(self) -> None:
+        self.player.transition_to(Locked())
+
+    def click_play(self) -> None:
+        self.player.stop_playback()
+        self.player.transition_to(Ready())
+
+    def click_next(self) -> None:
+        self.player.next_song()
+
+    def click_previous(self) -> None:
+        self.player.previous_song()
+```
 
 For the ``Context``, in this case the ``AudioPlayer``, here is the code:
 ```py

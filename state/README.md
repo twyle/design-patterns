@@ -15,7 +15,7 @@ As a simple example consider this workflow. Assume that the only application tha
 2. So you click on the ```lock button```. This unlocks your phone and now you can interact with the phone via the User Interface besides the volume and lock buttons. This is the ```Ready state```. At this point, you can once again lock the phone, adjust the volume, scroll through the playlist or even start playing music.
 3. To start playing music, you click on the ```play button```. This takes the ```Player``` to the ```Playing State```. In this state, you can also adjust the volume, scroll through the playlist or even decide to lock the phone.
 
-Depending on the particular state, the player may behave differently. For example, when ```locked```, clicking the ```lock button``` unlocks the phone. However clicking the ```next button``` or ```previous button``` does nothing(in this case we cannot even access them). However when the player is in a ```playing state```, clicking on the ```next button``` plays the next song.
+Depending on the particular state, the player may behave differently. For example, when ```locked```, clicking the ```lock button``` unlocks the phone. However clicking the ```next button``` or ```previous button``` does nothing(in this case we cannot even access them). However when the player is in a ```playing state```, clicking on the ```next button``` plays the next song. When in the ```Ready State```, clicking the ```play button``` starts playing music and takes the player to the ```Playing State```, whereas while in the ```Playing State```, this pauses the music playing and takes the ```Player``` to the ```Ready State```.
 
 This pattern has two major components:
 - ``Context`` which is the object whose behavior changes based on its internal state.
